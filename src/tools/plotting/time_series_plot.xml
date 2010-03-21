@@ -1,0 +1,37 @@
+<tool id="time_series_plot" name="Plot Time Series">
+    <description>Time series plotting tool</description>
+    <command interpreter="python">time_series_plot.py tab $format $input $output</command>
+    <inputs>
+        <param format="tabular" name="input" type="data" label="Source file"/>
+        <param name="format" type="select" label="Output format">
+          <option value="png">Image</option>
+          <option value="pdf">PDF</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data format="png" name="output">
+          <change_format>
+            <when input="format" value="pdf" format="pdf" />
+          </change_format>
+        </data>
+    </outputs>
+    <help>
+.. class:: infomark
+
+**TIP:** If your data is not TAB delimited, use *Text Manipulation-&gt;Convert*
+
+-----
+
+This tool plots the time series in a png image
+
+**Example**
+
+- Input file must be tabular and well structured.
+  Each row is a time series and his values are separated by tabs. There's no header
+
+- Sample output:
+
+.. image:: static/images/time_series_plot.png
+
+</help>
+</tool>

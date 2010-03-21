@@ -1,0 +1,7 @@
+This is a package of tools for Galaxy (http://bitbucket.org/galaxy/galaxy-central/wiki/Home)
+It offers some scripts to manipulate and process time series.
+
+In order to use our tools you need to have a working Galaxy instance and yeps-libs installed.
+
+to install the libs just clone the git repo and follow installation howto
+$ git clone git://github.com/volpino/yeps-clustering-lib.git
