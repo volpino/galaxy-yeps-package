@@ -78,7 +78,7 @@
 
 -----
 
-This tool computes a K-Medoid algorithm over a certain number of time series
+This tool computes a K-Medoid algorithm on a time series dataset
 
 **Example**
 

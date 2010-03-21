@@ -25,6 +25,7 @@
 -----
 
 This tool takes as input a dataset file and its lables file.
+It returns a plot of the time series divided by class.
 
 **Example**
 

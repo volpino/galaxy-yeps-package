@@ -81,7 +81,7 @@
 
 -----
 
-This tool computes a k-NN algorithm over a certain number of time series
+This tool computes a k-NN algorithm on a time series dataset
 
 **Example**
 

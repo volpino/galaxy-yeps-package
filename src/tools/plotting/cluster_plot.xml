@@ -29,7 +29,8 @@
 -----
 
 This tool takes as input the tabular file produced by a clustering algorithm and the
-time series files. It generates a plot image of the clusters (in different colors).
+time series files.
+It generates a plot of the time series divided by cluster.
 
 **Example**
 

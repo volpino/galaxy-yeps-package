@@ -22,12 +22,11 @@
 
 -----
 
-This tool plots the time series in a png image
+This tool plots the time series in a png image or in a PDF document.
 
 **Example**
 
-- Input file must be tabular and well structured.
-  Each row is a time series and his values are separated by tabs. There's no header
+- Input file must be tabular and well structured (each row is a time series and his values are separated by tabs, there's no header)
 
 - Sample output:
 
