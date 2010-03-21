@@ -5,3 +5,8 @@ In order to use our tools you need to have a working Galaxy instance and yeps-li
 
 to install the libs just clone the git repo and follow installation howto
 $ git clone git://github.com/volpino/yeps-clustering-lib.git
+
+Installation:
+1) Create the tarball using the create_pkg.sh script
+2) Install it in your Galaxy instance using "tar" or the install_pkg.sh script
+3) Enjoy :)
