@@ -1,10 +1,7 @@
 <tool id="kmedoid_tool" name="K-Medoid">
   <description>Clustering tool for time series</description>
-  <command>
-      #if $time == "y"
-        time
-      #end if
-      python kmedoid_tool.py -d $input -s tab -c $k -i $it -S $seed -o $output
+  <command interpreter="python">
+      kmedoid_tool.py -d $input -s tab -c $k -i $it -S $seed -o $output
       #if $compute.pu == "CPU"
         -p CPU -D $compute.distance.dist
         #if $compute.distance.dist == "ddtw" or $compute.distance.dist == "dtw"
@@ -15,6 +12,7 @@
       #elif $compute.pu == "GPU"
           -p GPU -D $compute.dist
       #end if
+      $time
   </command>
   <inputs>
     <param format="tabular" name="input" type="data" label="Source file"/>
@@ -69,8 +67,8 @@
       </when>
     </conditional>
     <param name="seed" type="text" value="None" label="Seed for random function" />
-    <param name="time" type="select" display="checkboxes" multiple="True" label="Display ellapsed time">
-      <option value="y">Yes</option>
+    <param name="time" type="select" display="checkboxes" multiple="True" label="Display elapsed time">
+      <option value="-T">Yes</option>
     </param>
   </inputs>
   <outputs>

@@ -29,7 +29,13 @@ parser.add_option("-o", "--output", metavar = "CSV",
 parser.add_option("-p", "--processor", type = "str",
                   dest = "pu", help = "Use CPU/GPU, default = CPU",
                   default="CPU")
+parser.add_option("-T", "--time", action = "store_true", default = False,
+                  dest = "time", help = "ellapsed time, default = False")
 options, args = parser.parse_args()
+
+if options.time is True:
+    import time
+    start = time.time()
 
 if not options.training:
 	parser.error("option -t (training data) is required")
@@ -70,3 +76,13 @@ res = nn.compute(options.k)
 w = csv.writer(open(options.foutp, 'w'), delimiter='\t')
 for line in res:
     w.writerow([line])
+    
+if options.time is True:
+    end = time.time()
+    elapsed = end - start
+    if elapsed > 60:
+        msg = "%f min" % (elapsed / 60.0)
+    else:
+        msg = "%f sec" % (elapsed)
+    print "Elapsed time: %s" % msg
+

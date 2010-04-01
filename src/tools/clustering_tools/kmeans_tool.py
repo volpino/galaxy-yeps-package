@@ -97,7 +97,7 @@ if options.time is True:
     end = time.time()
     elapsed = end - start
     if elapsed > 60:
-        msg = "%d min" % (elapsed / 60)
+        msg = "%f min" % (elapsed / 60.0)
     else:
-        msg = "%d sec" % (elapsed)
+        msg = "%f sec" % (elapsed)
     print "Elapsed time: %s" % msg
