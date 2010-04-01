@@ -12,9 +12,7 @@
       #elif $compute.pu == "GPU"
           -p GPU -D $compute.dist
       #end if
-      #if $time == "y"
-          -T
-      #end if
+      $time
   </command>
   <inputs>
     <param format="tabular" name="input" type="data" label="Source file"/>
@@ -70,8 +68,8 @@
     </conditional>
     <param name="seed" type="text" value="None" label="Seed for random function" />
     <param name="tol" type="float" value="0.0001" label="Tolerance of the algorithm" />
-    <param name="time" type="select" display="checkboxes" multiple="True" label="Display ellpsed time">
-      <option value="y">Yes</option>
+    <param name="time" type="select" display="checkboxes" multiple="True" label="Display elapsed time">
+      <option value="-T">Yes</option>
     </param>
   </inputs>
   <outputs>
