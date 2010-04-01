@@ -29,7 +29,12 @@ parser.add_option("-o", "--output", metavar = "CSV",
                   dest = "foutp", help = "name file output - required")
 parser.add_option("-p", "--processor", type = "str",
                   dest = "pu", help = "Use CPU/GPU, default = CPU", default="CPU")
+parser.add_option("-T", "--time", action = "store_true", default = False,
+                  dest = "time", help = "ellapsed time, default = False")
 (options, args) = parser.parse_args()
+
+if options.time is True:
+    start = time.time()
 
 if not options.finp:
 	parser.error("option -d (data) is required")
@@ -86,3 +91,12 @@ w = csv.writer(open(options.foutp, 'w'), delimiter='\t')
 for row in centroidsid:
     w.writerow(row)
 w.writerow(mini)
+
+if options.time is True:
+    end = time.time()
+    elapsed = end - start
+    if elapsed > 60:
+        msg = "%d min" % (elapsed / 60)
+    else:
+        msg = "%d sec" % (elapsed)
+    print "Elapsed time: %s" % msg

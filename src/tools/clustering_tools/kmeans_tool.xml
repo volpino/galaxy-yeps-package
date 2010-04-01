@@ -1,9 +1,6 @@
 <tool id="kmeans_tool" name="K-Means">
   <description>Clustering tool for time series</description>
   <command>
-      #if $time == "y"
-      time
-      #end if
       python kmeans_tool.py -d $input -s tab -c $k -i $it -S $seed -t $tol -o $output
       #if $compute.pu == "CPU"
         -p CPU -D $compute.distance.dist
@@ -14,6 +11,9 @@
         #end if
       #elif $compute.pu == "GPU"
           -p GPU -D $compute.dist
+      #end if
+      #if $time == "y"
+          -T
       #end if
   </command>
   <inputs>
