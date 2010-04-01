@@ -1,6 +1,9 @@
 <tool id="kmeans_tool" name="K-Means">
   <description>Clustering tool for time series</description>
   <command interpreter="python">
+      #if $time == "y"
+      time
+      #end if
       kmeans_tool.py -d $input -s tab -c $k -i $it -S $seed -t $tol -o $output
       #if $compute.pu == "CPU"
         -p CPU -D $compute.distance.dist
@@ -67,6 +70,9 @@
     </conditional>
     <param name="seed" type="text" value="None" label="Seed for random function" />
     <param name="tol" type="float" value="0.0001" label="Tolerance of the algorithm" />
+    <param name="time" type="select" display="checkboxes" multiple="True" label="Display required time">
+      <option value="y">Yes</option>
+    </param>
   </inputs>
   <outputs>
     <data format="tabular" name="output" />

@@ -1,6 +1,9 @@
 <tool id="knn_tool" name="k-NN">
   <description>Classification tool for time series</description>
     <command interpreter="python">
+      #if $time == "y"
+        time
+      #end if
       knn_tool.py -t $training -l $labels -s $test_set -k $k -w $weight -o $output
       #if $compute.pu == "CPU"
         -p CPU -D $compute.distance.dist
@@ -70,6 +73,9 @@
         </param>
       </when>
     </conditional>
+    <param name="time" type="select" display="checkboxes" multiple="True" label="Display required time">
+      <option value="y">Yes</option>
+    </param>
   </inputs>
   <outputs>
     <data format="tabular" name="output" />
