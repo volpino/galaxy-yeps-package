@@ -1,10 +1,10 @@
 <tool id="knn_tool" name="k-NN">
   <description>Classification tool for time series</description>
-    <command interpreter="python">
+    <command>
       #if $time == "y"
         time
       #end if
-      knn_tool.py -t $training -l $labels -s $test_set -k $k -w $weight -o $output
+      python knn_tool.py -t $training -l $labels -s $test_set -k $k -w $weight -o $output
       #if $compute.pu == "CPU"
         -p CPU -D $compute.distance.dist
         #if $compute.distance.dist == "ddtw" or $compute.distance.dist == "dtw"
@@ -26,7 +26,7 @@
         <option value="False">False</option>
       </param>
     <conditional name="compute">
-      <param name="pu" type="select" label="Compute using: ">
+      <param name="pu" type="select" label="Compute using">
         <option value="CPU">CPU</option>
         <option value="GPU">GPU</option>
       </param>
@@ -73,7 +73,7 @@
         </param>
       </when>
     </conditional>
-    <param name="time" type="select" display="checkboxes" multiple="True" label="Display required time">
+    <param name="time" type="select" display="checkboxes" multiple="True" label="Display ellapsed time">
       <option value="y">Yes</option>
     </param>
   </inputs>

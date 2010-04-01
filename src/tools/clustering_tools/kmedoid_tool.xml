@@ -1,10 +1,10 @@
 <tool id="kmedoid_tool" name="K-Medoid">
   <description>Clustering tool for time series</description>
-  <command interpreter="python">
+  <command>
       #if $time == "y"
         time
       #end if
-      kmedoid_tool.py -d $input -s tab -c $k -i $it -S $seed -o $output
+      python kmedoid_tool.py -d $input -s tab -c $k -i $it -S $seed -o $output
       #if $compute.pu == "CPU"
         -p CPU -D $compute.distance.dist
         #if $compute.distance.dist == "ddtw" or $compute.distance.dist == "dtw"
@@ -21,7 +21,7 @@
     <param name="k" type="integer" value="2" label="Number of clusters" />
     <param name="it" type="text" value="None" label="Number of iterations" />
     <conditional name="compute">
-      <param name="pu" type="select" label="Compute using: ">
+      <param name="pu" type="select" label="Compute using">
         <option value="CPU">CPU</option>
         <option value="GPU">GPU</option>
       </param>
@@ -69,7 +69,7 @@
       </when>
     </conditional>
     <param name="seed" type="text" value="None" label="Seed for random function" />
-    <param name="time" type="select" display="checkboxes" multiple="True" label="Display required time">
+    <param name="time" type="select" display="checkboxes" multiple="True" label="Display ellapsed time">
       <option value="y">Yes</option>
     </param>
   </inputs>

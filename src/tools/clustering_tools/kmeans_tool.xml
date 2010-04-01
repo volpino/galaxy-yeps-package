@@ -1,10 +1,10 @@
 <tool id="kmeans_tool" name="K-Means">
   <description>Clustering tool for time series</description>
-  <command interpreter="python">
+  <command>
       #if $time == "y"
       time
       #end if
-      kmeans_tool.py -d $input -s tab -c $k -i $it -S $seed -t $tol -o $output
+      python kmeans_tool.py -d $input -s tab -c $k -i $it -S $seed -t $tol -o $output
       #if $compute.pu == "CPU"
         -p CPU -D $compute.distance.dist
         #if $compute.distance.dist == "ddtw" or $compute.distance.dist == "dtw"
@@ -21,7 +21,7 @@
     <param name="k" type="integer" value="2" label="Number of clusters" />
     <param name="it" type="text" value="None" label="Number of iterations" />
     <conditional name="compute">
-      <param name="pu" type="select" label="Compute using: ">
+      <param name="pu" type="select" label="Compute using">
         <option value="CPU">CPU</option>
         <option value="GPU">GPU</option>
       </param>
@@ -70,7 +70,7 @@
     </conditional>
     <param name="seed" type="text" value="None" label="Seed for random function" />
     <param name="tol" type="float" value="0.0001" label="Tolerance of the algorithm" />
-    <param name="time" type="select" display="checkboxes" multiple="True" label="Display required time">
+    <param name="time" type="select" display="checkboxes" multiple="True" label="Display ellpsed time">
       <option value="y">Yes</option>
     </param>
   </inputs>
