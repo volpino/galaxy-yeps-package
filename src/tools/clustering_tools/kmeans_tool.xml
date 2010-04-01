@@ -1,7 +1,7 @@
 <tool id="kmeans_tool" name="K-Means">
   <description>Clustering tool for time series</description>
-  <command>
-      python kmeans_tool.py -d $input -s tab -c $k -i $it -S $seed -t $tol -o $output
+  <command interpreter="python">
+      kmeans_tool.py -d $input -s tab -c $k -i $it -S $seed -t $tol -o $output
       #if $compute.pu == "CPU"
         -p CPU -D $compute.distance.dist
         #if $compute.distance.dist == "ddtw" or $compute.distance.dist == "dtw"
