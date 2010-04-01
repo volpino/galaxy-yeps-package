@@ -34,6 +34,7 @@ parser.add_option("-T", "--time", action = "store_true", default = False,
 (options, args) = parser.parse_args()
 
 if options.time is True:
+    import time
     start = time.time()
 
 if not options.finp:
