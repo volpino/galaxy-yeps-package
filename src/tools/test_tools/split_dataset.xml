@@ -3,6 +3,7 @@
   <command interpreter="python">split_dataset.py $input $col $train $test</command>
   <inputs>
     <param name="col" type="text" value="-1" label="Labels column"/>
+    <param name="coeff" type="float" value="0.3" label="Split coefficient"/>
     <param format="tabular" name="input" type="data" label="Source file"/>
   </inputs>
   <outputs>

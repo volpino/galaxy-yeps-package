@@ -9,19 +9,21 @@ try:
     col = argv[2]
     output1 = argv[3]
     output2 = argv[4]
+    coeff = argv[5]
 except IndexError:
-    print "Usage: split_dataset.py <input> <output1> <output2>"
+    print "Usage: split_dataset.py <input> <output1> <output2> <coeff>"
     exit(1)
 
 reader = csv.reader(open(input), delimiter='\t')
 l1 = [row for row in reader]
 l2 = []
 
-if col != 'None': 
+if col != 'None':
     try:
         col = int(col)
+        coeff = float(coeff)
     except ValueError:
-        print "Invalid column id!"
+        print "Invalid input data!"
         exit(1)
     labels = []
     labeli_index = []
@@ -39,11 +41,11 @@ if col != 'None':
             else:
                 continue
     for i in range(len(labeli_index)):
-        if len(labeli_index[i]) / 3 < 1:
+        if len(labeli_index[i]) * coeff < 1:
             l2_index.append(label_index[i][random.randint(0, len(label_index[i]) - 1)])
         else:
             used_r = []
-            for j in range(len(labeli_index[i]) / 3):           # could be done by canceling things out
+            for j in range(len(labeli_index[i]) * coeff):           # could be done by canceling things out
                 r = random.randint(0, len(labeli_index[i]) -1)
                 if (r in used_r) == False:
                     l2_index.append(labeli_index[i][r])
@@ -62,7 +64,7 @@ if col != 'None':
         del l1[l2_index[i]]
         
 else:
-    for i in range(len(l1) / 3):
+    for i in range(len(l1) * coeff):
         n = random.randint(0, len(l1) -1 - i)
         l2.append(l1[n])
         del l1[n]
