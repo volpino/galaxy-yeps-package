@@ -45,7 +45,7 @@ if col != 'None':
             l2_index.append(label_index[i][random.randint(0, len(label_index[i]) - 1)])
         else:
             used_r = []
-            for j in range(len(labeli_index[i]) * coeff):           # could be done by canceling things out
+            for j in range(int(len(labeli_index[i]) * coeff)):           # could be done by canceling things out
                 r = random.randint(0, len(labeli_index[i]) -1)
                 if (r in used_r) == False:
                     l2_index.append(labeli_index[i][r])
@@ -64,7 +64,7 @@ if col != 'None':
         del l1[l2_index[i]]
         
 else:
-    for i in range(len(l1) * coeff):
+    for i in range(int(len(l1) * coeff)):
         n = random.randint(0, len(l1) -1 - i)
         l2.append(l1[n])
         del l1[n]
